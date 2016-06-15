@@ -26,6 +26,8 @@ export Resume from './content/resumes/resume/resume'
 
 export Resumes from './content/resumes/resumes'
 
+export Samples from './content/samples/samples'
+
 export Feachures from './content/feachures/feachures'
 
 export Tips from './content/tips/tips'
@@ -42,7 +44,7 @@ export CreateResume from './content/createResume/createResume'
 
 export UserMainResume from './content/userMain/userMainResume'
 
-export WorkerMain from './workerMain/workerMain'
+export WorkerMain from './content/workerMain/workerMain'
 
 
 

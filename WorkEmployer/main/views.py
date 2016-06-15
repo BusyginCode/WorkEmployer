@@ -4,9 +4,11 @@ from django.contrib.auth.models import User
 from main.models import UserProfile, Tip, Resume, Skill, Company
 from django.shortcuts import render, redirect
 from django.contrib import auth
+from django.core.mail import send_mail
 # Create your views here.
 import json
 from datetime import datetime
+from post_office import mail
 def main(request):
 	return render(request, 'index.html')
 
@@ -80,6 +82,9 @@ def getUserInfo(request):
 			"phone": resume.phone,
 			"about": resume.about,
 			"city": resume.phone,
+			"education": resume.education,
+			"institution": resume.institution,
+			"profession": resume.profession,
 			"date": resume.data,
 			"userId": resume.resume_user_id
 		})
@@ -91,12 +96,6 @@ def getUserInfo(request):
 
 def getWorkerInfo(request):
 	parsed_json = json.loads(request.body.decode("utf-8"))
-	# if parsed_json['data']['city']:
-	# 	resumes1 = Resume.objects.filter(city=parsed_json['data']['city'])
-	# if parsed_json['data']['post']:
-	# 	resumes2 = Resume.objects.filter(post__icontains=parsed_json['data']['post'])
-	# if parsed_json['data']['date']:
-	# 	resumes3 = Resume.objects.filter(data=parsed_json['data']['date'])
 	resResumes = []
 	print(parsed_json['data'])
 	if parsed_json['data']:
@@ -115,6 +114,9 @@ def getWorkerInfo(request):
 			"post": resume.post,
 			"phone": resume.phone,
 			"about": resume.about,
+			"education": resume.education,
+			"institution": resume.institution,
+			"profession": resume.profession,
 			'date': resume.data,
 			"userId": resume.resume_user_id
 		})
@@ -128,7 +130,7 @@ def getWorkerInfo(request):
 
 def addResume(request):
 	parsed_json = json.loads(request.body.decode("utf-8"))
-	resume = Resume(name=parsed_json['name'], email=parsed_json['email'], post=parsed_json['post'], phone=parsed_json['phone'], about=parsed_json['about'], resume_user_id=parsed_json['id'], city=parsed_json['city'])
+	resume = Resume(name=parsed_json['name'], email=parsed_json['email'], post=parsed_json['post'], phone=parsed_json['phone'], about=parsed_json['about'], resume_user_id=parsed_json['id'], city=parsed_json['city'], education=parsed_json['education'], institution=parsed_json['institution'], profession=parsed_json['profession'])
 	resume.save()
 	for skill in parsed_json['skills']:
 		skill = Skill(skill=skill['skill'], text=skill['description'], skill_user_id=parsed_json['id'], post=parsed_json['post'])
@@ -153,6 +155,9 @@ def editResume(request):
 	resume.post = parsed_json['data']['post']
 	resume.phone = parsed_json['data']['phone']
 	resume.about = parsed_json['data']['about']
+	resume.education = parsed_json['data']['education']
+	resume.institution = parsed_json['data']['institution']
+	resume.profession = parsed_json['data']['profession']
 	resume.save()
 	Skill.objects.filter(post=parsed_json['data']['post'], skill_user_id=parsed_json['data']['id']).delete()
 	Company.objects.filter(post=parsed_json['data']['post'], skill_user_id=parsed_json['data']['id']).delete()
@@ -187,7 +192,44 @@ def getResume(request):
         'post': Resume.objects.get(id=parsed_json['id']).post,
         'phone': Resume.objects.get(id=parsed_json['id']).phone,
         'about': Resume.objects.get(id=parsed_json['id']).about,
+        'education': Resume.objects.get(id=parsed_json['id']).education,
+		'institution': Resume.objects.get(id=parsed_json['id']).institution,
+		'profession': Resume.objects.get(id=parsed_json['id']).profession,
         'skills': resSkills,
         'city': Resume.objects.get(id=parsed_json['id']).city,
         "companies": resCompanies
 	})
+
+def getResumes(request):
+	parsed_json = json.loads(request.body.decode("utf-8"))
+	if parsed_json["samples"]:
+		resumes = Resume.objects.filter(resume_user_id=24)
+	else:
+		resumes = Resume.objects.all()
+	resResumes = []
+	index = 0
+	for resume in resumes:
+		if (index >= parsed_json["count"]):
+			break
+		resResumes.append({
+			'post': resume.post,
+			"id": resume.id,
+			"userId": resume.resume_user_id,
+			"date": resume.data
+		})
+		index+=1
+	return JsonResponse({
+		"resumes": resResumes,
+		'allResumesCount': resumes.count()
+	})
+
+def sendFeedback(request):
+	parsed_json = json.loads(request.body.decode("utf-8"))
+	mail.send(
+	    parsed_json['email'], # List of email addresses also accepted
+	    'busygin576@gmail.com',
+	    subject=parsed_json['subject'],
+	    message=parsed_json['message'],
+	    priority='now'
+	)
+	return JsonResponse({ 'success': 1 })

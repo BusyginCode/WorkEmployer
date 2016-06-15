@@ -20,7 +20,10 @@ export default class CreateResume extends React.Component {
         currentCompany: '',
         currentExpirience: '',
         companies: [],
-        id: window.localStorage['id']
+        id: window.localStorage['id'],
+        education: '',
+        institution: '',
+        profession: ''
       }
     }
   }
@@ -43,7 +46,10 @@ export default class CreateResume extends React.Component {
               skills: data.skills,
               city: data.city,
               companies: data.companies,
-              id: window.localStorage['id']
+              id: window.localStorage['id'],
+              education: data.education,
+              institution: data.institution,
+              profession: data.profession
             }
           })
         }
@@ -198,6 +204,16 @@ export default class CreateResume extends React.Component {
         </div>
         <button type="submit" className="btn btn-default" onClick={ this.addCompany.bind(this) }>Add expirience point</button>
         <hr />
+        <div className="form-group">
+          <label htmlFor="education" className="col-sm-2 control-label">Education</label>
+          <input className="form-control" id="education" value={ this.state.data.education} onChange={ this.setUserValues.bind(this, 'education') } />
+          <br />
+          <label className="col-sm-2 control-label">Institution</label>
+          <input className="form-control" rows="3" value={ this.state.data.institution } onChange={ this.setUserValues.bind(this, 'institution') } />
+          <br />
+          <label className="col-sm-2 control-label">Profession</label>
+          <input className="form-control" rows="3" value={ this.state.data.profession } onChange={ this.setUserValues.bind(this, 'profession') } />
+        </div>
         <div className="form-group">
           <div>
             <Link to="/user/" className="btn btn-default" onClick={ this.sendResume.bind(this) } style={{ marginTop: 10 + 'px' }}>{this.props.edit ? "Edit complete" : "Add resume"}</Link>

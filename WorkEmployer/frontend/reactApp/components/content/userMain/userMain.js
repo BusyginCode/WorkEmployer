@@ -78,7 +78,7 @@ export default class UserMain extends React.Component {
         this.state.username ?  
           <div className="post-masonry col-md-4 col-sm-6 wow fadeInUp" style={{ width: 90 + '%', margin: 50 + 'px', marginTop: 100 + 'px', color: 'gray' }}>
             <section className="userHeader">
-              <span style={{ fontSize: 25 + 'pt' }}>Hello { this.state.username }</span><br />
+              <span style={{ fontSize: 25 + 'pt' }}>Hello { this.state.username }</span><br /><br />
               <span>{ this.state.email }</span>
               <Link to="/createResume" className="btn btn-default" style={{ marginLeft: 50 + 'px' }}>Create resume</Link>
               <hr />

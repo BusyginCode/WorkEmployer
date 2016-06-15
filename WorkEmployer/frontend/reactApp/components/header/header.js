@@ -36,7 +36,6 @@ export default class Header extends React.Component {
               <li><Link to={'/'}>HOME</Link></li>
               <li><Link to={'/tips'}>TIPS</Link></li>
               <li><Link to={'/resumes'}>RESUMES</Link></li>
-              <li><Link to={'/samples'}>SAMPLES</Link></li>
               <li><Link to={'/feachures'}>FEACHURES</Link></li>
               {
                 window.localStorage['id'] ?

@@ -27,6 +27,7 @@ export default class SignInForm extends React.Component {
         if (data.success) {
           window.localStorage.setItem('id', data.userId)
           if (parseInt(data.worker)) {
+            window.localStorage.setItem('worker', true)
             window.location.href = '/worker/'
           } else {
             window.location.href = '/user/'

@@ -36,6 +36,9 @@ class Resume(models.Model):
 	phone = models.CharField(max_length=1000)
 	about = models.TextField()
 	city = models.CharField(max_length=1000)
+	education = models.CharField(max_length=1000)
+	institution = models.CharField(max_length=1000)
+	profession = models.TextField()
 	data = models.DateField(auto_now_add=True)
 	lastChanges = models.DateField(auto_now=True)
 

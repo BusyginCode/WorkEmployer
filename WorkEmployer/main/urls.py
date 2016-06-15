@@ -10,6 +10,8 @@ urlpatterns = [
 	url(r'deleteResume', views.deleteResume),
 	url(r'editResume', views.editResume),
 	url(r'getWorkerInfo', views.getWorkerInfo),
+	url(r'getResumes', views.getResumes),
 	url(r'getResume', views.getResume),
+	url(r'sendFeedback', views.sendFeedback),
     url(r'', views.main),
 ]
