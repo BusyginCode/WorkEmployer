@@ -19,6 +19,12 @@ export default class SignInForm extends React.Component {
     this.forceUpdate()
   }
 
+  inputMouseDown(e) {
+    if (e.keyCode == 13) {
+      this.sendRegisterRequest()
+    }
+  }
+
   sendRegisterRequest() {
     ajax(
       '/login',
@@ -46,18 +52,18 @@ export default class SignInForm extends React.Component {
 
     return (
       <section style={{ marginTop: 50 + 'px', padding: 10 + 'px' }}>
-        <div className="form-group">
+        <div className="form-group" style={{ display: 'inline-block' }}>
           <label htmlFor="exampleInputEmail3">Login</label>
-          <input type="login" className="form-control" id="exampleInputEmail3" style={{ margin: 5 + 'px' }} onChange={ this.setUserValues.bind(this, 'username') } />
+          <input type="login" className="form-control" id="exampleInputEmail3" style={{ margin: 5 + 'px' }} onKeyDown={ this.inputMouseDown.bind(this) } onChange={ this.setUserValues.bind(this, 'username') } />
         </div>
-        <div className="form-group">
+        <div className="form-group" style={{ display: 'inline-block', marginLeft: 10 + 'px'  }}>
           <label htmlFor="exampleInputPassword3">Password</label>
-          <input type="password" className="form-control" id="exampleInputPassword3" style={{ margin: 5 + 'px' }} onChange={ this.setUserValues.bind(this, 'password') } />
+          <input type="password" className="form-control" id="exampleInputPassword3" style={{ margin: 5 + 'px' }} onKeyDown={ this.inputMouseDown.bind(this) } onChange={ this.setUserValues.bind(this, 'password') } />
         </div>
-        <button className="btn btn-default" onClick={ this.sendRegisterRequest.bind(this) }>Sign in</button>
+        <button className="btn btn-default" onClick={ this.sendRegisterRequest.bind(this) } style={{ marginTop: '-3px', marginLeft: '15px' }}>Sign in</button>
         {
           this.state.unValid ?
-            <p style={{ marginTop: 10 + 'px', padding: 10 + 'px', borderRadius: 5 + 'px', backgroundColor: 'rgba(255, 0, 0, 0.4)', color: 'white', width: 300 + 'px' }}>{ this.state.unValid }</p>
+            <p style={{ padding: 10 + 'px', borderRadius: 5 + 'px', backgroundColor: 'rgba(255, 0, 0, 0.4)', color: 'white', width: 300 + 'px' }}>{ this.state.unValid }</p>
           : null
         }
       </section>

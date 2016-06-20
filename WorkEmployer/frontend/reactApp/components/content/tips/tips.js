@@ -6,7 +6,8 @@ export default class Tips extends React.Component {
   constructor() {
     super()
     this.state = {
-      tips: null
+      tips: null,
+      tipsCount: 4
     }
   }
 
@@ -16,7 +17,8 @@ export default class Tips extends React.Component {
       '',
       (data) => {
         this.setState({
-          tips: data.tips
+          tips: data.tips,
+          tipsAllCount: data.tipsAllCount
         })
       },
       'GET'
@@ -28,7 +30,13 @@ export default class Tips extends React.Component {
   }
   
   generateTips() {
-    return this.state.tips.map((tip, key) => {
+    let tips = []
+    if (this.state.tipsAllCount > this.state.tipsCount) {
+      tips = this.state.tips.slice(0, this.state.tipsCount)
+    } else {
+      tips = this.state.tips
+    }
+    return tips.map((tip, key) => {
       return (
         <Tip 
           title={ tip.title } 
@@ -53,6 +61,13 @@ export default class Tips extends React.Component {
             this.generateTips()
           : <Loader />
         }
+        <div>
+          {
+            this.state.tipsAllCount > this.state.tipsCount ?
+               <a onClick={ () => { this.setState({ tipsCount: this.state.tipsCount + 8 }, () => { this.componentWillMount(); }); }  } style={{ width: 100 + '%' }}  className="btn btn-default">View More</a>
+            : null
+          }
+        </div>
       </div>
     )
   }

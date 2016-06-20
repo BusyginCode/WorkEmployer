@@ -12,7 +12,7 @@ export default class Resume extends React.Component {
   }
 
   componentWillMount() {
-    if (window.localStorage['resumeId'] && window.localStorage['id']) {
+    if (window.localStorage['resumeId'] || window.localStorage['id']) {
       ajax(
         '/getResume',
         { id: window.localStorage['resumeId'], userId: (window.localStorage['openResumeId'] ? window.localStorage['openResumeId'] : window.localStorage['seeResumeId'] ? window.localStorage['seeResumeId'] : window.localStorage['id']) },
@@ -53,7 +53,7 @@ export default class Resume extends React.Component {
     if (this.state.data.email) {
       ajax(
         '/sendFeedback',
-        { subject: this.state.subject, message: this.state.message, email: this.state.data.email },
+        { subject: this.state.subject, message: this.state.message, email: this.state.data.email, id: window.localStorage['id'] },
         (data) => {
           this.setState({
             subject: '',
@@ -75,7 +75,7 @@ export default class Resume extends React.Component {
       this.state.data && !this.state.error ?
         <div id="doc2" className="yui-t7">
           {
-            window.localStorage['openResumeId'] ?
+            window.localStorage['openResumeId'] && this.state.data.email ?
               <div className="form-group" style={{ marginBottom: '15px', marginTop: '80px', marginLeft: '50px', maxWidth: '50%' }}>
                 <h2>Invitation</h2>
                 <label htmlFor="subject" className="col-sm-2 control-label">Subject</label>
@@ -150,7 +150,7 @@ export default class Resume extends React.Component {
                   {
                     this.state.data.skills ?
                       <div className="">
-                        <div className="yui-u first">
+                        <div className="yui-u first" style={{ marginBottom: -20 + 'px' }}>
                           <h2>Skills</h2>
                         </div>
                         <div className="yui-u">
@@ -159,7 +159,7 @@ export default class Resume extends React.Component {
                               this.state.data.skills.map((skill, key) => {
                                 return (
                                   <div className="talent" key={ key }>
-                                    <h2>{ skill.skill }</h2>
+                                    <h3>{ skill.skill }</h3>
                                     <p>{ skill.description }</p>
                                   </div>
                                 )
@@ -170,10 +170,10 @@ export default class Resume extends React.Component {
                       </div>
                     : null
                   }
-                  <br />
+                  <br /><hr />
                   {
                     this.state.data.companies && this.state.data.companies.length ?
-                      <div className="yui-gf">
+                      <div className="yui-gf" style={{ marginBottom: -20 + 'px' }}>
                         <div className="yui-u first">
                           <h2>Experience</h2>
                         </div>
@@ -183,9 +183,8 @@ export default class Resume extends React.Component {
                               this.state.data.companies.map((company, key) => {
                                 return (
                                   <div className="job" key={ key }>
-                                    <h2>Facebook</h2>
-                                    <h3>{ company.company }</h3>
-                                    <h4>2005-2007</h4>
+                                    <h2>{ company.company }</h2>
+                                    <h4>{ company.date }</h4>
                                     <p>{ company.expirience }</p>
                                   </div>
                                 )
@@ -196,6 +195,7 @@ export default class Resume extends React.Component {
                       </div>
                     : null
                   }
+                  <br />
                   <div className="last">
                     {
                       this.state.data.education ?

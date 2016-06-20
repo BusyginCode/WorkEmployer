@@ -11,6 +11,7 @@ export default class CreateResume extends React.Component {
         name: '',
         email: '',
         post: '',
+        date: '',
         phone: '',
         about: '',
         currentSkill: '',
@@ -87,10 +88,12 @@ export default class CreateResume extends React.Component {
   addCompany() {
     this.state.data.companies = [...this.state.data.companies, {
       company: this.state.data.currentCompany,
-      expirience: this.state.data.currentExpirience
+      expirience: this.state.data.currentExpirience,
+      date: this.state.data.date
     }]
     this.state.data.currentCompany = ''
     this.state.data.currentExpirience = ''
+    this.state.data.date = ''
     this.setState({
       data: this.state.data,
     })
@@ -196,6 +199,9 @@ export default class CreateResume extends React.Component {
         }
         <hr />
         <div className="form-group">
+          <label htmlFor="skill" className="col-sm-2 control-label">Date</label>
+          <input type="date" className="form-control" id="date" placeholder="Date" value={ this.state.data.date} onChange={ this.setUserValues.bind(this, 'date') } />
+          <br />
           <label htmlFor="skill" className="col-sm-2 control-label">Company</label>
           <input className="form-control" id="skill" placeholder="Skill" value={ this.state.data.currentCompany} onChange={ this.setUserValues.bind(this, 'currentCompany') } />
           <br />

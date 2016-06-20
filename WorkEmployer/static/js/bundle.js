@@ -50,7 +50,7 @@
 	
 	var _reactRouter = __webpack_require__(161);
 	
-	var _history = __webpack_require__(232);
+	var _history = __webpack_require__(234);
 	
 	var history = (0, _history.createHistory)();
 	
@@ -64,7 +64,6 @@
 			React.createElement(_reactRouter.Route, { path: '/resumes', component: _components.Resumes }),
 			React.createElement(_reactRouter.Route, { path: '/resume', component: _components.Resume }),
 			React.createElement(_reactRouter.Route, { path: '/tips', component: _components.Tips }),
-			React.createElement(_reactRouter.Route, { path: '/samples', component: _components.Resumes }),
 			React.createElement(_reactRouter.Route, { path: '/feachures', component: _components.Feachures }),
 			React.createElement(_reactRouter.Route, { path: '/user', component: _components.UserMain }),
 			React.createElement(_reactRouter.Route, { path: '/worker', component: _components.WorkerMain }),
@@ -19688,7 +19687,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.WorkerMain = exports.UserMainResume = exports.CreateResume = exports.SignInForm = exports.Sidebar = exports.Loader = exports.Tip = exports.Tips = exports.Feachures = exports.Resumes = exports.Resume = exports.DescriptionItem = exports.Description = exports.UserMain = exports.Home = exports.Counter = exports.MainTips = exports.MainTip = exports.MainContent = exports.EmployerContact = exports.Main = exports.Footer = exports.Header = undefined;
+	exports.WorkerMain = exports.UserMainResume = exports.CreateResume = exports.SignInForm = exports.Sidebar = exports.Loader = exports.Tip = exports.Tips = exports.Feachures = exports.Samples = exports.Resumes = exports.Resume = exports.DescriptionItem = exports.Description = exports.UserMain = exports.Home = exports.Counter = exports.MainTips = exports.MainTip = exports.MainContent = exports.EmployerContact = exports.Main = exports.Footer = exports.Header = undefined;
 	
 	var _header = __webpack_require__(160);
 	
@@ -19746,39 +19745,43 @@
 	
 	var _resumes2 = _interopRequireDefault(_resumes);
 	
-	var _feachures = __webpack_require__(224);
+	var _samples = __webpack_require__(224);
+	
+	var _samples2 = _interopRequireDefault(_samples);
+	
+	var _feachures = __webpack_require__(225);
 	
 	var _feachures2 = _interopRequireDefault(_feachures);
 	
-	var _tips = __webpack_require__(225);
+	var _tips = __webpack_require__(226);
 	
 	var _tips2 = _interopRequireDefault(_tips);
 	
-	var _tip = __webpack_require__(226);
+	var _tip = __webpack_require__(227);
 	
 	var _tip2 = _interopRequireDefault(_tip);
 	
-	var _loader = __webpack_require__(227);
+	var _loader = __webpack_require__(228);
 	
 	var _loader2 = _interopRequireDefault(_loader);
 	
-	var _sidebar = __webpack_require__(228);
+	var _sidebar = __webpack_require__(229);
 	
 	var _sidebar2 = _interopRequireDefault(_sidebar);
 	
-	var _signInForm = __webpack_require__(229);
+	var _signInForm = __webpack_require__(230);
 	
 	var _signInForm2 = _interopRequireDefault(_signInForm);
 	
-	var _createResume = __webpack_require__(230);
+	var _createResume = __webpack_require__(231);
 	
 	var _createResume2 = _interopRequireDefault(_createResume);
 	
-	var _userMainResume = __webpack_require__(231);
+	var _userMainResume = __webpack_require__(232);
 	
 	var _userMainResume2 = _interopRequireDefault(_userMainResume);
 	
-	var _workerMain = __webpack_require__(237);
+	var _workerMain = __webpack_require__(233);
 	
 	var _workerMain2 = _interopRequireDefault(_workerMain);
 	
@@ -19798,6 +19801,7 @@
 	exports.DescriptionItem = _descriptionItem2.default;
 	exports.Resume = _resume2.default;
 	exports.Resumes = _resumes2.default;
+	exports.Samples = _samples2.default;
 	exports.Feachures = _feachures2.default;
 	exports.Tips = _tips2.default;
 	exports.Tip = _tip2.default;
@@ -19914,15 +19918,6 @@
 	                  _reactRouter.Link,
 	                  { to: '/resumes' },
 	                  'RESUMES'
-	                )
-	              ),
-	              React.createElement(
-	                'li',
-	                null,
-	                React.createElement(
-	                  _reactRouter.Link,
-	                  { to: '/samples' },
-	                  'SAMPLES'
 	                )
 	              ),
 	              React.createElement(
@@ -24735,6 +24730,7 @@
 	      for (var val in this.state.data) {
 	        if (this.state.data[val].length < 6 && val !== 'description' || this.state.unValid) {
 	          this.setState({
+	            wait: false,
 	            unValid: val
 	          });
 	          return;
@@ -24778,7 +24774,7 @@
 	              React.createElement(
 	                'div',
 	                { className: 'col-md-12 col-sm-12' },
-	                React.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Login', name: 'Username', id: 'login', onBlur: this.checkValid.bind(this, 'login', /^[a-z0-9_-]*$/), onChange: this.setUserValues.bind(this, 'login') }),
+	                React.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Login', name: 'Username', id: 'login', onBlur: this.checkValid.bind(this, 'login', /^[a-zA-Z]*$/), onChange: this.setUserValues.bind(this, 'login') }),
 	                React.createElement('input', { type: 'email', className: 'form-control', placeholder: 'Email', name: 'email', id: 'email', onBlur: this.checkValid.bind(this, 'email', /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/), onChange: this.setUserValues.bind(this, 'email') }),
 	                React.createElement('input', { type: 'password', className: 'form-control', placeholder: 'Password', name: 'password', onBlur: this.checkValid.bind(this, 'password', /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/), onChange: this.setUserValues.bind(this, 'password') }),
 	                React.createElement(
@@ -24910,7 +24906,7 @@
 	        _this2.setState({
 	          employers: data.employers,
 	          developers: data.developers,
-	          tips: data.tips.slice(0, 6)
+	          tips: data.tips.slice(0, 3)
 	        });
 	      }, 'GET');
 	    }
@@ -24953,6 +24949,8 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
+	var _reactRouter = __webpack_require__(161);
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -24972,30 +24970,30 @@
 	    key: "render",
 	    value: function render() {
 	      return React.createElement(
-	        "div",
-	        { className: "post-masonry col-md-4 col-sm-6 wow fadeInUp", "data-wow-delay": "0.3s" },
+	        _reactRouter.Link,
+	        { to: "/tips" },
 	        React.createElement(
 	          "div",
-	          { className: "blog-wrapper" },
-	          React.createElement("img", { src: this.props.img, className: "img-responsive", alt: "blog img" }),
+	          { className: "post-masonry col-md-4 col-sm-6 wow fadeInUp", "data-wow-delay": "0.3s" },
 	          React.createElement(
-	            "h3",
-	            null,
+	            "div",
+	            { className: "blog-wrapper" },
+	            React.createElement("img", { src: this.props.img, className: "img-responsive", alt: "blog img" }),
 	            React.createElement(
-	              "a",
-	              { href: "#" },
+	              "h3",
+	              null,
 	              this.props.title
+	            ),
+	            React.createElement(
+	              "small",
+	              null,
+	              this.props.date
+	            ),
+	            React.createElement(
+	              "p",
+	              null,
+	              this.props.text.length > 250 ? this.props.text.slice(0, 165) + "..." : this.props.text
 	            )
-	          ),
-	          React.createElement(
-	            "small",
-	            null,
-	            this.props.date
-	          ),
-	          React.createElement(
-	            "p",
-	            null,
-	            this.props.text.length > 250 ? this.props.text.slice(0, 165) + "..." : this.props.text
 	          )
 	        )
 	      );
@@ -25389,6 +25387,7 @@
 	            this.state.username
 	          ),
 	          React.createElement('br', null),
+	          React.createElement('br', null),
 	          React.createElement(
 	            'span',
 	            null,
@@ -25579,7 +25578,7 @@
 	/* WEBPACK VAR INJECTION */(function(React) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -25595,251 +25594,322 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var Resume = function (_React$Component) {
-		_inherits(Resume, _React$Component);
+	  _inherits(Resume, _React$Component);
 	
-		function Resume() {
-			_classCallCheck(this, Resume);
+	  function Resume() {
+	    _classCallCheck(this, Resume);
 	
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Resume).call(this));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Resume).call(this));
 	
-			_this.state = {};
-			return _this;
-		}
+	    _this.state = {
+	      message: '',
+	      subject: '',
+	      error: false
+	    };
+	    return _this;
+	  }
 	
-		_createClass(Resume, [{
-			key: 'componentWillMount',
-			value: function componentWillMount() {
-				var _this2 = this;
+	  _createClass(Resume, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var _this2 = this;
 	
-				if (window.localStorage['resumeId'] && window.localStorage['id']) {
-					(0, _utils.ajax)('/getResume', { id: window.localStorage['resumeId'], userId: window.localStorage['id'] }, function (data) {
-						_this2.setState({
-							data: {
-								name: data.name,
-								email: data.email,
-								post: data.post,
-								phone: data.phone,
-								about: data.about,
-								currentSkill: _this2.state.currentSkill,
-								currentDescription: _this2.state.currentDescription,
-								skills: data.skills,
-								companies: data.companies,
-								id: window.localStorage['id']
-							}
-						});
-					});
-				} else {
-					this.setState({
-						error: 'Can not open resume, try later'
-					});
-				}
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				return this.state.data && !this.state.error ? React.createElement(
-					'div',
-					{ id: 'doc2', className: 'yui-t7' },
-					React.createElement(
-						'div',
-						{ id: 'inner' },
-						React.createElement(
-							'div',
-							{ id: 'hd' },
-							React.createElement(
-								'div',
-								{ className: 'yui-gc' },
-								React.createElement(
-									'div',
-									{ className: 'yui-u first' },
-									React.createElement(
-										'h1',
-										null,
-										this.state.data.name
-									),
-									React.createElement(
-										'h2',
-										null,
-										this.state.data.post
-									)
-								),
-								React.createElement(
-									'div',
-									{ className: 'yui-u' },
-									React.createElement(
-										'div',
-										{ className: 'contact-info' },
-										React.createElement(
-											'h3',
-											null,
-											React.createElement(
-												'a',
-												{ href: '#' },
-												this.state.data.email
-											)
-										),
-										React.createElement(
-											'h3',
-											null,
-											this.state.data.phone
-										)
-									)
-								)
-							)
-						),
-						React.createElement(
-							'div',
-							{ id: 'bd' },
-							React.createElement(
-								'div',
-								{ id: 'yui-main' },
-								React.createElement(
-									'div',
-									{ className: 'yui-b' },
-									React.createElement(
-										'div',
-										{ className: 'yui-gf' },
-										React.createElement(
-											'div',
-											{ className: 'yui-u first' },
-											React.createElement(
-												'h2',
-												null,
-												'Profile'
-											)
-										),
-										React.createElement(
-											'div',
-											{ className: 'yui-u' },
-											React.createElement(
-												'p',
-												{ className: 'enlarge' },
-												this.state.data.about
-											)
-										)
-									),
-									React.createElement(
-										'div',
-										{ className: 'yui-gf' },
-										React.createElement(
-											'div',
-											{ className: 'yui-u first' },
-											React.createElement(
-												'h2',
-												null,
-												'Skills'
-											)
-										),
-										React.createElement(
-											'div',
-											{ className: 'yui-u' },
-											this.state.data.skills ? this.state.data.skills.map(function (skill, key) {
-												return React.createElement(
-													'div',
-													{ className: 'talent', key: key },
-													React.createElement(
-														'h2',
-														null,
-														skill.skill
-													),
-													React.createElement(
-														'p',
-														null,
-														skill.description
-													)
-												);
-											}) : React.createElement(_components.Loader, null)
-										)
-									),
-									React.createElement(
-										'div',
-										{ className: 'yui-gf' },
-										React.createElement(
-											'div',
-											{ className: 'yui-u first' },
-											React.createElement(
-												'h2',
-												null,
-												'Experience'
-											)
-										),
-										React.createElement(
-											'div',
-											{ className: 'yui-u' },
-											this.state.data.companies ? this.state.data.companies.map(function (company, key) {
-												return React.createElement(
-													'div',
-													{ className: 'job', key: key },
-													React.createElement(
-														'h2',
-														null,
-														'Facebook'
-													),
-													React.createElement(
-														'h3',
-														null,
-														company.company
-													),
-													React.createElement(
-														'h4',
-														null,
-														'2005-2007'
-													),
-													React.createElement(
-														'p',
-														null,
-														company.expirience
-													)
-												);
-											}) : React.createElement(_components.Loader, null)
-										)
-									),
-									React.createElement(
-										'div',
-										{ className: 'yui-gf last' },
-										React.createElement(
-											'div',
-											{ className: 'yui-u first' },
-											React.createElement(
-												'h2',
-												null,
-												'Education'
-											)
-										),
-										React.createElement(
-											'div',
-											{ className: 'yui-u' },
-											React.createElement(
-												'h2',
-												null,
-												'Indiana University - Bloomington, Indiana'
-											),
-											React.createElement(
-												'h3',
-												null,
-												'Dual Major, Economics and English — ',
-												React.createElement(
-													'strong',
-													null,
-													'4.0 GPA'
-												),
-												' '
-											)
-										)
-									)
-								)
-							)
-						)
-					)
-				) : this.state.error ? React.createElement(
-					'h2',
-					{ style: { marginTop: 100 + 'px', marginLeft: 30 + 'px' } },
-					this.state.error
-				) : React.createElement(_components.Loader, null);
-			}
-		}]);
+	      if (window.localStorage['resumeId'] || window.localStorage['id']) {
+	        (0, _utils.ajax)('/getResume', { id: window.localStorage['resumeId'], userId: window.localStorage['openResumeId'] ? window.localStorage['openResumeId'] : window.localStorage['seeResumeId'] ? window.localStorage['seeResumeId'] : window.localStorage['id'] }, function (data) {
+	          _this2.setState({
+	            data: {
+	              name: data.name,
+	              email: data.email,
+	              post: data.post,
+	              phone: data.phone,
+	              about: data.about,
+	              city: data.city,
+	              currentSkill: _this2.state.currentSkill,
+	              currentDescription: _this2.state.currentDescription,
+	              skills: data.skills,
+	              companies: data.companies,
+	              id: window.localStorage['id'],
+	              education: data.education,
+	              institution: data.institution,
+	              profession: data.profession
+	            }
+	          });
+	        });
+	      } else {
+	        this.setState({
+	          error: 'Can not open resume, try later'
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      localStorage.removeItem('resumeId');
+	      localStorage.removeItem('openResumeId');
+	    }
+	  }, {
+	    key: 'sendFeedback',
+	    value: function sendFeedback() {
+	      var _this3 = this;
 	
-		return Resume;
+	      if (this.state.data.email) {
+	        (0, _utils.ajax)('/sendFeedback', { subject: this.state.subject, message: this.state.message, email: this.state.data.email, id: window.localStorage['id'] }, function (data) {
+	          _this3.setState({
+	            subject: '',
+	            message: '',
+	            success: true
+	          });
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'setUserValues',
+	    value: function setUserValues(value, e) {
+	      this.state[value] = e.target.value;
+	      this.forceUpdate();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return this.state.data && !this.state.error ? React.createElement(
+	        'div',
+	        { id: 'doc2', className: 'yui-t7' },
+	        window.localStorage['openResumeId'] && this.state.data.email ? React.createElement(
+	          'div',
+	          { className: 'form-group', style: { marginBottom: '15px', marginTop: '80px', marginLeft: '50px', maxWidth: '50%' } },
+	          React.createElement(
+	            'h2',
+	            null,
+	            'Invitation'
+	          ),
+	          React.createElement(
+	            'label',
+	            { htmlFor: 'subject', className: 'col-sm-2 control-label' },
+	            'Subject'
+	          ),
+	          React.createElement('input', { className: 'form-control', id: 'subject', value: this.state.subject, onChange: this.setUserValues.bind(this, 'subject') }),
+	          React.createElement('br', null),
+	          React.createElement(
+	            'label',
+	            { className: 'col-sm-2 control-label' },
+	            'Message'
+	          ),
+	          React.createElement('textarea', { className: 'form-control', rows: '3', value: this.state.message, onChange: this.setUserValues.bind(this, 'message') }),
+	          this.state.subject && this.state.message ? React.createElement(
+	            'button',
+	            { style: { marginTop: 10 + 'px' }, className: 'btn btn-default', onClick: this.sendFeedback.bind(this) },
+	            'Send invitation'
+	          ) : null,
+	          this.state.success ? React.createElement(
+	            'p',
+	            { style: { color: 'green', marginTop: 10 + 'px', width: '50%', background: 'rgba(0,255,0,0.2)', borderRadius: '5px', padding: '5px', textAlign: 'center' } },
+	            'Success'
+	          ) : null
+	        ) : null,
+	        React.createElement(
+	          'div',
+	          { id: 'inner' },
+	          React.createElement(
+	            'div',
+	            { id: 'hd' },
+	            React.createElement(
+	              'div',
+	              { className: 'yui-gc' },
+	              React.createElement(
+	                'div',
+	                { className: 'yui-u first' },
+	                this.state.data.name ? React.createElement(
+	                  'h1',
+	                  null,
+	                  this.state.data.name
+	                ) : null,
+	                this.state.data.post ? React.createElement(
+	                  'h2',
+	                  null,
+	                  this.state.data.post
+	                ) : null,
+	                this.state.data.city ? React.createElement(
+	                  'h2',
+	                  null,
+	                  this.state.data.city
+	                ) : null
+	              ),
+	              React.createElement(
+	                'div',
+	                { className: 'yui-u' },
+	                React.createElement(
+	                  'div',
+	                  { className: 'contact-info' },
+	                  this.state.data.email ? React.createElement(
+	                    'h3',
+	                    null,
+	                    React.createElement(
+	                      'a',
+	                      null,
+	                      this.state.data.email
+	                    )
+	                  ) : null,
+	                  this.state.data.phone ? React.createElement(
+	                    'h3',
+	                    null,
+	                    this.state.data.phone
+	                  ) : null
+	                )
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            'div',
+	            { id: 'bd' },
+	            React.createElement(
+	              'div',
+	              { id: 'yui-main' },
+	              React.createElement(
+	                'div',
+	                { className: 'yui-b' },
+	                React.createElement(
+	                  'div',
+	                  { className: '' },
+	                  React.createElement(
+	                    'div',
+	                    { className: 'yui-u first' },
+	                    React.createElement(
+	                      'h2',
+	                      null,
+	                      'Profile'
+	                    )
+	                  ),
+	                  React.createElement(
+	                    'div',
+	                    { className: 'yui-u' },
+	                    this.state.data.about ? React.createElement(
+	                      'p',
+	                      { className: 'enlarge' },
+	                      this.state.data.about
+	                    ) : null
+	                  )
+	                ),
+	                this.state.data.skills ? React.createElement(
+	                  'div',
+	                  { className: '' },
+	                  React.createElement(
+	                    'div',
+	                    { className: 'yui-u first', style: { marginBottom: -20 + 'px' } },
+	                    React.createElement(
+	                      'h2',
+	                      null,
+	                      'Skills'
+	                    )
+	                  ),
+	                  React.createElement(
+	                    'div',
+	                    { className: 'yui-u' },
+	                    this.state.data.skills ? this.state.data.skills.map(function (skill, key) {
+	                      return React.createElement(
+	                        'div',
+	                        { className: 'talent', key: key },
+	                        React.createElement(
+	                          'h3',
+	                          null,
+	                          skill.skill
+	                        ),
+	                        React.createElement(
+	                          'p',
+	                          null,
+	                          skill.description
+	                        )
+	                      );
+	                    }) : React.createElement(_components.Loader, null)
+	                  )
+	                ) : null,
+	                React.createElement('br', null),
+	                React.createElement('hr', null),
+	                this.state.data.companies && this.state.data.companies.length ? React.createElement(
+	                  'div',
+	                  { className: 'yui-gf', style: { marginBottom: -20 + 'px' } },
+	                  React.createElement(
+	                    'div',
+	                    { className: 'yui-u first' },
+	                    React.createElement(
+	                      'h2',
+	                      null,
+	                      'Experience'
+	                    )
+	                  ),
+	                  React.createElement(
+	                    'div',
+	                    { className: 'yui-u' },
+	                    this.state.data.companies ? this.state.data.companies.map(function (company, key) {
+	                      return React.createElement(
+	                        'div',
+	                        { className: 'job', key: key },
+	                        React.createElement(
+	                          'h2',
+	                          null,
+	                          company.company
+	                        ),
+	                        React.createElement(
+	                          'h4',
+	                          null,
+	                          company.date
+	                        ),
+	                        React.createElement(
+	                          'p',
+	                          null,
+	                          company.expirience
+	                        )
+	                      );
+	                    }) : React.createElement(_components.Loader, null)
+	                  )
+	                ) : null,
+	                React.createElement('br', null),
+	                React.createElement(
+	                  'div',
+	                  { className: 'last' },
+	                  this.state.data.education ? React.createElement(
+	                    'div',
+	                    { className: 'yui-u first' },
+	                    React.createElement(
+	                      'h2',
+	                      null,
+	                      'Education: ',
+	                      this.state.data.education
+	                    )
+	                  ) : null,
+	                  React.createElement(
+	                    'div',
+	                    { className: 'yui-u' },
+	                    this.state.data.institution ? React.createElement(
+	                      'h2',
+	                      null,
+	                      'Institution: ',
+	                      this.state.data.institution
+	                    ) : null,
+	                    this.state.data.profession ? React.createElement(
+	                      'h3',
+	                      null,
+	                      'Profession: ',
+	                      this.state.data.profession
+	                    ) : null
+	                  )
+	                ),
+	                React.createElement('br', null),
+	                React.createElement('br', null),
+	                React.createElement('br', null),
+	                React.createElement('br', null)
+	              )
+	            )
+	          )
+	        )
+	      ) : this.state.error ? React.createElement(
+	        'h2',
+	        { style: { marginTop: 100 + 'px', marginLeft: 30 + 'px' } },
+	        this.state.error
+	      ) : React.createElement(_components.Loader, null);
+	    }
+	  }]);
+	
+	  return Resume;
 	}(React.Component);
 	
 	exports.default = Resume;
@@ -25860,6 +25930,12 @@
 	
 	var _components = __webpack_require__(159);
 	
+	var _utils = __webpack_require__(208);
+	
+	var _reactRouter = __webpack_require__(161);
+	
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -25872,17 +25948,106 @@
 	  function Resumes() {
 	    _classCallCheck(this, Resumes);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Resumes).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Resumes).call(this));
+	
+	    _this.state = {
+	      resumes: false,
+	      resumesCount: 5,
+	      allResumesCount: 0
+	    };
+	    return _this;
 	  }
 	
 	  _createClass(Resumes, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var _this2 = this;
+	
+	      (0, _utils.ajax)('/getResumes', { count: this.state.resumesCount, samples: this.props.samples ? true : false }, function (data) {
+	        _this2.state.resumes = [];
+	        data.resumes.map(function (resume, key) {
+	          _this2.state.resumes = [].concat(_toConsumableArray(_this2.state.resumes), [{
+	            post: resume.post,
+	            id: resume.id,
+	            userId: resume.userId,
+	            date: resume.date
+	          }]);
+	        });
+	        _this2.setState({
+	          resumes: _this2.state.resumes,
+	          allResumesCount: data.allResumesCount
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'seeResume',
+	    value: function seeResume(resumeId, userId) {
+	      window.localStorage.setItem("resumeId", resumeId);
+	      window.localStorage.setItem("seeResumeId", userId);
+	    }
+	  }, {
+	    key: 'generateResumes',
+	    value: function generateResumes() {
+	      var _this3 = this;
+	
+	      var resumes = [];
+	      if (this.state.allResumesCount > this.state.resumesCount) {
+	        resumes = this.state.resumes.slice(0, this.state.resumesCount);
+	      } else {
+	        resumes = this.state.resumes;
+	      }
+	      console.log(this.state.resumesCount, resumes);
+	      return resumes.map(function (resume, key) {
+	        return React.createElement(
+	          'div',
+	          { style: { position: 'relative' }, key: key },
+	          React.createElement(
+	            _reactRouter.Link,
+	            { to: '/resume', onClick: _this3.seeResume.bind(_this3, resume.id, resume.userId) },
+	            React.createElement(
+	              'span',
+	              { style: { position: 'relative', top: 7 + "px" } },
+	              resume.post
+	            ),
+	            React.createElement(
+	              'span',
+	              { style: { position: 'absolute', top: 7 + "px", right: 0 } },
+	              resume.date
+	            )
+	          ),
+	          React.createElement('hr', null)
+	        );
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return React.createElement(
+	      var _this4 = this;
+	
+	      return this.state.resumes ? React.createElement(
 	        'div',
-	        null,
-	        React.createElement(_components.Resume, null)
-	      );
+	        { style: { width: 80 + '%', margin: '0 auto', paddingTop: 70 + 'px' } },
+	        React.createElement(
+	          'h2',
+	          null,
+	          !this.props.samples ? "Resumes" : "Samples"
+	        ),
+	        this.state.resumes.length ? this.generateResumes() : React.createElement(
+	          'h2',
+	          null,
+	          !this.props.samples ? "Resumes" : "Samples",
+	          ' not found.'
+	        ),
+	        this.state.allResumesCount > this.state.resumesCount ? React.createElement(
+	          'a',
+	          { onClick: function onClick() {
+	              _this4.setState({ resumesCount: _this4.state.resumesCount + 8 }, function () {
+	                _this4.componentWillMount();
+	              });
+	            }, className: 'btn btn-default btn-block btn-default' },
+	          'View More'
+	        ) : null
+	      ) : React.createElement(_components.Loader, null);
 	    }
 	  }]);
 	
@@ -25897,7 +26062,54 @@
 /* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(React) {"use strict";
+	/* WEBPACK VAR INJECTION */(function(React) {'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _components = __webpack_require__(159);
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Samples = function (_React$Component) {
+	  _inherits(Samples, _React$Component);
+	
+	  function Samples() {
+	    _classCallCheck(this, Samples);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Samples).apply(this, arguments));
+	  }
+	
+	  _createClass(Samples, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(_components.Resumes, { samples: true })
+	      );
+	    }
+	  }]);
+	
+	  return Samples;
+	}(React.Component);
+	
+	exports.default = Samples;
+	module.exports = exports['default'];
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(147)))
+
+/***/ },
+/* 225 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(React) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -25921,12 +26133,130 @@
 	  }
 	
 	  _createClass(Feachures, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 	      return React.createElement(
-	        "div",
-	        null,
-	        "Here is so cool!"
+	        'div',
+	        { id: 'features', style: { paddingTop: 70 + 'px', width: 80 + '%', margin: '0 auto' } },
+	        React.createElement(
+	          'div',
+	          { className: 'features-top' },
+	          React.createElement(
+	            'h2',
+	            null,
+	            'Powerful Features Help You Build Your Resume'
+	          ),
+	          React.createElement(
+	            'p',
+	            null,
+	            'See what we cooked up to help you create the cover letter and resume of your dreams!'
+	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'leftside-block job-search-feature', id: 'job-search' },
+	          React.createElement(
+	            'div',
+	            { className: 'feature' },
+	            React.createElement(
+	              'h3',
+	              null,
+	              'Job  Search'
+	            ),
+	            React.createElement(
+	              'p',
+	              null,
+	              React.createElement(
+	                'strong',
+	                null,
+	                'We search for jobs on multiple job boards ',
+	                React.createElement('br', null),
+	                ' all at once - so you can find the job that works for you.'
+	              ),
+	              ' Use our search engine to find posts on numerous boards, including:'
+	            ),
+	            React.createElement(
+	              'div',
+	              { className: 'job-boards-list' },
+	              React.createElement(
+	                'h3',
+	                null,
+	                'Job boards we currently serve:'
+	              ),
+	              React.createElement(
+	                'ul',
+	                null,
+	                React.createElement(
+	                  'li',
+	                  null,
+	                  'Indeed'
+	                ),
+	                React.createElement(
+	                  'li',
+	                  null,
+	                  'CareerBuilder'
+	                ),
+	                React.createElement(
+	                  'li',
+	                  { className: 'clear' },
+	                  'SimplyHired'
+	                ),
+	                React.createElement(
+	                  'li',
+	                  null,
+	                  'Authentic Jobs'
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'feature' },
+	          React.createElement(
+	            'h2',
+	            null,
+	            'Notifications and Offers'
+	          ),
+	          React.createElement(
+	            'p',
+	            null,
+	            React.createElement(
+	              'strong',
+	              null,
+	              'Put your feet up!  We\'ll keep an eye out for your dream job.'
+	            )
+	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'feature' },
+	          React.createElement(
+	            'h2',
+	            null,
+	            React.createElement(
+	              'cufon',
+	              { className: 'cufon cufon-canvas', alt: 'Resume ', style: { width: '84px', height: '25px' } },
+	              'Resume Builder'
+	            )
+	          ),
+	          React.createElement(
+	            'h3',
+	            null,
+	            React.createElement(
+	              'strong',
+	              null,
+	              'Everything you need on one page!'
+	            ),
+	            React.createElement('br', null),
+	            ' No multiple forms - it\'s fast and user-friendly.'
+	          ),
+	          React.createElement(
+	            'p',
+	            null,
+	            'Simply list your qualifications and experience and share it with potential employers today. Then, view statistics, update, download, and print anytime. Fantastic results with minimum effort!'
+	          )
+	        )
 	      );
 	    }
 	  }]);
@@ -25939,7 +26269,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(147)))
 
 /***/ },
-/* 225 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(React) {'use strict';
@@ -25969,7 +26299,8 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Tips).call(this));
 	
 	    _this.state = {
-	      tips: null
+	      tips: null,
+	      tipsCount: 4
 	    };
 	    return _this;
 	  }
@@ -25981,7 +26312,8 @@
 	
 	      (0, _utils.ajax)('/getMainData', '', function (data) {
 	        _this2.setState({
-	          tips: data.tips
+	          tips: data.tips,
+	          tipsAllCount: data.tipsAllCount
 	        });
 	      }, 'GET');
 	    }
@@ -25993,7 +26325,13 @@
 	  }, {
 	    key: 'generateTips',
 	    value: function generateTips() {
-	      return this.state.tips.map(function (tip, key) {
+	      var tips = [];
+	      if (this.state.tipsAllCount > this.state.tipsCount) {
+	        tips = this.state.tips.slice(0, this.state.tipsCount);
+	      } else {
+	        tips = this.state.tips;
+	      }
+	      return tips.map(function (tip, key) {
 	        return React.createElement(_components.Tip, {
 	          title: tip.title,
 	          img: tip.img,
@@ -26006,6 +26344,8 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this3 = this;
+	
 	      return React.createElement(
 	        'div',
 	        { className: 'container', style: { marginTop: 50 + 'px' } },
@@ -26019,7 +26359,20 @@
 	          )
 	        ),
 	        React.createElement('br', null),
-	        this.state.tips ? this.generateTips() : React.createElement(_components.Loader, null)
+	        this.state.tips ? this.generateTips() : React.createElement(_components.Loader, null),
+	        React.createElement(
+	          'div',
+	          null,
+	          this.state.tipsAllCount > this.state.tipsCount ? React.createElement(
+	            'a',
+	            { onClick: function onClick() {
+	                _this3.setState({ tipsCount: _this3.state.tipsCount + 8 }, function () {
+	                  _this3.componentWillMount();
+	                });
+	              }, style: { width: 100 + '%' }, className: 'btn btn-default' },
+	            'View More'
+	          ) : null
+	        )
 	      );
 	    }
 	  }]);
@@ -26032,7 +26385,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(147)))
 
 /***/ },
-/* 226 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(React) {'use strict';
@@ -26109,7 +26462,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(147)))
 
 /***/ },
-/* 227 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(React) {"use strict";
@@ -26154,7 +26507,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(147)))
 
 /***/ },
-/* 228 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(React) {"use strict";
@@ -26349,7 +26702,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(147)))
 
 /***/ },
-/* 229 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(React) {'use strict';
@@ -26394,6 +26747,13 @@
 	      this.forceUpdate();
 	    }
 	  }, {
+	    key: 'inputMouseDown',
+	    value: function inputMouseDown(e) {
+	      if (e.keyCode == 13) {
+	        this.sendRegisterRequest();
+	      }
+	    }
+	  }, {
 	    key: 'sendRegisterRequest',
 	    value: function sendRegisterRequest() {
 	      var _this2 = this;
@@ -26402,6 +26762,7 @@
 	        if (data.success) {
 	          window.localStorage.setItem('id', data.userId);
 	          if (parseInt(data.worker)) {
+	            window.localStorage.setItem('worker', true);
 	            window.location.href = '/worker/';
 	          } else {
 	            window.location.href = '/user/';
@@ -26422,32 +26783,32 @@
 	        { style: { marginTop: 50 + 'px', padding: 10 + 'px' } },
 	        React.createElement(
 	          'div',
-	          { className: 'form-group' },
+	          { className: 'form-group', style: { display: 'inline-block' } },
 	          React.createElement(
 	            'label',
 	            { htmlFor: 'exampleInputEmail3' },
 	            'Login'
 	          ),
-	          React.createElement('input', { type: 'login', className: 'form-control', id: 'exampleInputEmail3', style: { margin: 5 + 'px' }, onChange: this.setUserValues.bind(this, 'username') })
+	          React.createElement('input', { type: 'login', className: 'form-control', id: 'exampleInputEmail3', style: { margin: 5 + 'px' }, onKeyDown: this.inputMouseDown.bind(this), onChange: this.setUserValues.bind(this, 'username') })
 	        ),
 	        React.createElement(
 	          'div',
-	          { className: 'form-group' },
+	          { className: 'form-group', style: { display: 'inline-block', marginLeft: 10 + 'px' } },
 	          React.createElement(
 	            'label',
 	            { htmlFor: 'exampleInputPassword3' },
 	            'Password'
 	          ),
-	          React.createElement('input', { type: 'password', className: 'form-control', id: 'exampleInputPassword3', style: { margin: 5 + 'px' }, onChange: this.setUserValues.bind(this, 'password') })
+	          React.createElement('input', { type: 'password', className: 'form-control', id: 'exampleInputPassword3', style: { margin: 5 + 'px' }, onKeyDown: this.inputMouseDown.bind(this), onChange: this.setUserValues.bind(this, 'password') })
 	        ),
 	        React.createElement(
 	          'button',
-	          { className: 'btn btn-default', onClick: this.sendRegisterRequest.bind(this) },
+	          { className: 'btn btn-default', onClick: this.sendRegisterRequest.bind(this), style: { marginTop: '-3px', marginLeft: '15px' } },
 	          'Sign in'
 	        ),
 	        this.state.unValid ? React.createElement(
 	          'p',
-	          { style: { marginTop: 10 + 'px', padding: 10 + 'px', borderRadius: 5 + 'px', backgroundColor: 'rgba(255, 0, 0, 0.4)', color: 'white', width: 300 + 'px' } },
+	          { style: { padding: 10 + 'px', borderRadius: 5 + 'px', backgroundColor: 'rgba(255, 0, 0, 0.4)', color: 'white', width: 300 + 'px' } },
 	          this.state.unValid
 	        ) : null
 	      );
@@ -26462,7 +26823,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(147)))
 
 /***/ },
-/* 230 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(React) {'use strict';
@@ -26500,6 +26861,7 @@
 	        name: '',
 	        email: '',
 	        post: '',
+	        date: '',
 	        phone: '',
 	        about: '',
 	        currentSkill: '',
@@ -26509,7 +26871,10 @@
 	        currentCompany: '',
 	        currentExpirience: '',
 	        companies: [],
-	        id: window.localStorage['id']
+	        id: window.localStorage['id'],
+	        education: '',
+	        institution: '',
+	        profession: ''
 	      }
 	    };
 	    return _this;
@@ -26534,7 +26899,10 @@
 	              skills: data.skills,
 	              city: data.city,
 	              companies: data.companies,
-	              id: window.localStorage['id']
+	              id: window.localStorage['id'],
+	              education: data.education,
+	              institution: data.institution,
+	              profession: data.profession
 	            }
 	          });
 	        });
@@ -26568,10 +26936,12 @@
 	    value: function addCompany() {
 	      this.state.data.companies = [].concat(_toConsumableArray(this.state.data.companies), [{
 	        company: this.state.data.currentCompany,
-	        expirience: this.state.data.currentExpirience
+	        expirience: this.state.data.currentExpirience,
+	        date: this.state.data.date
 	      }]);
 	      this.state.data.currentCompany = '';
 	      this.state.data.currentExpirience = '';
+	      this.state.data.date = '';
 	      this.setState({
 	        data: this.state.data
 	      });
@@ -26775,6 +27145,13 @@
 	          React.createElement(
 	            'label',
 	            { htmlFor: 'skill', className: 'col-sm-2 control-label' },
+	            'Date'
+	          ),
+	          React.createElement('input', { type: 'date', className: 'form-control', id: 'date', placeholder: 'Date', value: this.state.data.date, onChange: this.setUserValues.bind(this, 'date') }),
+	          React.createElement('br', null),
+	          React.createElement(
+	            'label',
+	            { htmlFor: 'skill', className: 'col-sm-2 control-label' },
 	            'Company'
 	          ),
 	          React.createElement('input', { className: 'form-control', id: 'skill', placeholder: 'Skill', value: this.state.data.currentCompany, onChange: this.setUserValues.bind(this, 'currentCompany') }),
@@ -26792,6 +27169,30 @@
 	          'Add expirience point'
 	        ),
 	        React.createElement('hr', null),
+	        React.createElement(
+	          'div',
+	          { className: 'form-group' },
+	          React.createElement(
+	            'label',
+	            { htmlFor: 'education', className: 'col-sm-2 control-label' },
+	            'Education'
+	          ),
+	          React.createElement('input', { className: 'form-control', id: 'education', value: this.state.data.education, onChange: this.setUserValues.bind(this, 'education') }),
+	          React.createElement('br', null),
+	          React.createElement(
+	            'label',
+	            { className: 'col-sm-2 control-label' },
+	            'Institution'
+	          ),
+	          React.createElement('input', { className: 'form-control', rows: '3', value: this.state.data.institution, onChange: this.setUserValues.bind(this, 'institution') }),
+	          React.createElement('br', null),
+	          React.createElement(
+	            'label',
+	            { className: 'col-sm-2 control-label' },
+	            'Profession'
+	          ),
+	          React.createElement('input', { className: 'form-control', rows: '3', value: this.state.data.profession, onChange: this.setUserValues.bind(this, 'profession') })
+	        ),
 	        React.createElement(
 	          'div',
 	          { className: 'form-group' },
@@ -26817,7 +27218,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(147)))
 
 /***/ },
-/* 231 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(React) {'use strict';
@@ -26920,7 +27321,270 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(147)))
 
 /***/ },
-/* 232 */
+/* 233 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(React) {'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _components = __webpack_require__(159);
+	
+	var _utils = __webpack_require__(208);
+	
+	var _reactRouter = __webpack_require__(161);
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var WorkerMain = function (_React$Component) {
+	  _inherits(WorkerMain, _React$Component);
+	
+	  function WorkerMain() {
+	    _classCallCheck(this, WorkerMain);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(WorkerMain).call(this));
+	
+	    _this.state = {
+	      data: '',
+	      post: '',
+	      city: '',
+	      dateOpen: false,
+	      postOpen: false,
+	      cityOpen: false,
+	      resumesCount: 8,
+	      allResumesCount: 0
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(WorkerMain, [{
+	    key: 'openMenu',
+	    value: function openMenu(value) {
+	      this.state[value] = !this.state[value];
+	      this.forceUpdate();
+	    }
+	  }, {
+	    key: 'setFilters',
+	    value: function setFilters(value, e) {
+	      this.state[value] = e.target.value;
+	      this.forceUpdate();
+	    }
+	  }, {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var _this2 = this;
+	
+	      var data = {};
+	      for (var i in this.state) {
+	        if ((i == 'post' || i == 'city' || i == 'data') && this.state[i]) {
+	          data[i] = this.state[i];
+	        }
+	      }
+	      (0, _utils.ajax)('/getWorkerInfo', { id: window.localStorage['id'], data: Object.keys(data).length > 0 ? data : false, count: this.state.resumesCount }, function (data) {
+	        _this2.setState({
+	          username: data.username,
+	          email: data.email,
+	          description: data.description,
+	          resumes: data.resumes,
+	          allResumesCount: data.allResumesCount
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'openResume',
+	    value: function openResume(id, userId) {
+	      window.localStorage.setItem("resumeId", id);
+	      window.localStorage.setItem("openResumeId", userId);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this3 = this,
+	          _React$createElement;
+	
+	      return this.state.username ? React.createElement(
+	        'div',
+	        { style: { marginTop: 50 + 'px', marginBottom: -120 + 'px' } },
+	        React.createElement(
+	          'div',
+	          { className: 'sidebar-collapse', style: { marginLeft: 10 + 'px', maxWidth: 400 + 'px', display: 'inline-block', minWidth: 250 + 'px', position: 'absolute' } },
+	          React.createElement(
+	            'ul',
+	            { className: 'nav', id: 'main-menu' },
+	            React.createElement(
+	              'li',
+	              null,
+	              React.createElement(
+	                'div',
+	                { style: { color: 'gray', fontWeight: 'bold', textAlign: 'center', margin: 10 + 'px' } },
+	                React.createElement(
+	                  'div',
+	                  { className: 'inner-text' },
+	                  this.state.username,
+	                  React.createElement('br', null),
+	                  React.createElement(
+	                    'small',
+	                    null,
+	                    this.state.email
+	                  )
+	                )
+	              )
+	            ),
+	            React.createElement(
+	              'li',
+	              { className: this.state.dateOpen ? 'active' : '' },
+	              React.createElement(
+	                'a',
+	                { style: { cursor: 'pointer' }, onClick: this.openMenu.bind(this, "dateOpen"), className: 'menu-top' },
+	                React.createElement('i', { className: 'fa fa-edit ' }),
+	                'Date',
+	                React.createElement('span', { className: 'fa arrow' })
+	              ),
+	              this.state.dateOpen ? React.createElement(
+	                'ul',
+	                { className: 'nav nav-second-level' },
+	                React.createElement(
+	                  'li',
+	                  null,
+	                  React.createElement(
+	                    'a',
+	                    null,
+	                    React.createElement('input', { type: 'date', className: 'form-control', onChange: this.setFilters.bind(this, "data"), value: this.state.data })
+	                  )
+	                ),
+	                React.createElement(
+	                  'li',
+	                  null,
+	                  React.createElement(
+	                    'a',
+	                    { style: { cursor: 'pointer' }, onClick: function onClick() {
+	                        return _this3.setState({ data: '' });
+	                      } },
+	                    'Clear'
+	                  )
+	                )
+	              ) : null
+	            ),
+	            React.createElement(
+	              'li',
+	              { className: this.state.postOpen ? 'active' : '' },
+	              React.createElement(
+	                'a',
+	                (_React$createElement = { style: { cursor: 'pointer' } }, _defineProperty(_React$createElement, 'style', { cursor: 'pointer' }), _defineProperty(_React$createElement, 'onClick', this.openMenu.bind(this, "postOpen")), _React$createElement),
+	                React.createElement('i', { className: 'fa fa-edit ' }),
+	                'Post',
+	                React.createElement('span', { className: 'fa arrow' })
+	              ),
+	              this.state.postOpen ? React.createElement(
+	                'ul',
+	                { className: 'nav nav-second-level' },
+	                React.createElement(
+	                  'li',
+	                  null,
+	                  React.createElement(
+	                    'a',
+	                    null,
+	                    React.createElement('input', { type: 'text', className: 'form-control', onChange: this.setFilters.bind(this, "post") })
+	                  )
+	                )
+	              ) : null
+	            ),
+	            React.createElement(
+	              'li',
+	              { className: this.state.cityOpen ? 'active' : '' },
+	              React.createElement(
+	                'a',
+	                { style: { cursor: 'pointer' }, onClick: this.openMenu.bind(this, "cityOpen") },
+	                React.createElement('i', { className: 'fa fa-edit  ' }),
+	                'City ',
+	                React.createElement('span', { className: 'fa arrow' })
+	              ),
+	              this.state.cityOpen ? React.createElement(
+	                'ul',
+	                { className: 'nav nav-second-level' },
+	                React.createElement(
+	                  'li',
+	                  null,
+	                  React.createElement(
+	                    'a',
+	                    null,
+	                    React.createElement('input', { type: 'text', className: 'form-control', onChange: this.setFilters.bind(this, "city") })
+	                  )
+	                )
+	              ) : null
+	            ),
+	            React.createElement(
+	              'li',
+	              null,
+	              React.createElement(
+	                'a',
+	                { style: { cursor: 'pointer' }, onClick: this.componentWillMount.bind(this) },
+	                React.createElement('i', { className: 'fa fa-recycle ' }),
+	                'Find'
+	              )
+	            )
+	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'panel-body', style: { display: 'inline-block', width: '80%', marginLeft: '20%', overflow: 'auto', height: 446 + 'px', marginTop: 54 + 'px' } },
+	          React.createElement(
+	            'div',
+	            { className: 'list-group' },
+	            this.state.resumes.length > 0 ? this.state.resumes.map(function (resume, key) {
+	              return React.createElement(
+	                _reactRouter.Link,
+	                { style: { cursor: 'pointer', marginTop: 5 + 'px' }, key: key, to: '/resume', className: 'list-group-item', onClick: _this3.openResume.bind(_this3, resume.id, resume.userId) },
+	                React.createElement('i', { className: ' icon-comment' }),
+	                ' ',
+	                resume.post,
+	                React.createElement(
+	                  'span',
+	                  { className: 'pull-right text-muted small' },
+	                  React.createElement(
+	                    'em',
+	                    null,
+	                    resume.date.slice(0, 10)
+	                  )
+	                )
+	              );
+	            }) : React.createElement(
+	              'span',
+	              null,
+	              'Resumes not found.'
+	            )
+	          ),
+	          this.state.allResumesCount > this.state.resumesCount ? React.createElement(
+	            'a',
+	            { onClick: function onClick() {
+	                _this3.setState({ resumesCount: _this3.state.resumesCount + 8 });_this3.componentWillMount();
+	              }, className: 'btn btn-default btn-block btn-default' },
+	            'View More'
+	          ) : null
+	        )
+	      ) : React.createElement(_components.Loader, null);
+	    }
+	  }]);
+	
+	  return WorkerMain;
+	}(React.Component);
+	
+	exports.default = WorkerMain;
+	module.exports = exports['default'];
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(147)))
+
+/***/ },
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26937,7 +27601,7 @@
 	
 	var _createLocation3 = _interopRequireDefault(_createLocation2);
 	
-	var _createBrowserHistory = __webpack_require__(233);
+	var _createBrowserHistory = __webpack_require__(235);
 	
 	var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
 	
@@ -26961,7 +27625,7 @@
 	
 	exports.useBasename = _useBasename3['default'];
 	
-	var _useBeforeUnload2 = __webpack_require__(234);
+	var _useBeforeUnload2 = __webpack_require__(236);
 	
 	var _useBeforeUnload3 = _interopRequireDefault(_useBeforeUnload2);
 	
@@ -26981,13 +27645,13 @@
 	
 	// deprecated
 	
-	var _enableBeforeUnload2 = __webpack_require__(235);
+	var _enableBeforeUnload2 = __webpack_require__(237);
 	
 	var _enableBeforeUnload3 = _interopRequireDefault(_enableBeforeUnload2);
 	
 	exports.enableBeforeUnload = _enableBeforeUnload3['default'];
 	
-	var _enableQueries2 = __webpack_require__(236);
+	var _enableQueries2 = __webpack_require__(238);
 	
 	var _enableQueries3 = _interopRequireDefault(_enableQueries2);
 	
@@ -26996,7 +27660,7 @@
 	exports.createLocation = createLocation;
 
 /***/ },
-/* 233 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -27180,7 +27844,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 234 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -27297,7 +27961,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 235 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27310,7 +27974,7 @@
 	
 	var _deprecate2 = _interopRequireDefault(_deprecate);
 	
-	var _useBeforeUnload = __webpack_require__(234);
+	var _useBeforeUnload = __webpack_require__(236);
 	
 	var _useBeforeUnload2 = _interopRequireDefault(_useBeforeUnload);
 	
@@ -27318,7 +27982,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 236 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27337,262 +28001,6 @@
 	
 	exports['default'] = _deprecate2['default'](_useQueries2['default'], 'enableQueries is deprecated, use useQueries instead');
 	module.exports = exports['default'];
-
-/***/ },
-/* 237 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(React) {'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _components = __webpack_require__(159);
-	
-	var _utils = __webpack_require__(208);
-	
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var WorkerMain = function (_React$Component) {
-	  _inherits(WorkerMain, _React$Component);
-	
-	  function WorkerMain() {
-	    _classCallCheck(this, WorkerMain);
-	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(WorkerMain).call(this));
-	
-	    _this.state = {
-	      data: '',
-	      post: '',
-	      city: '',
-	      dateOpen: false,
-	      postOpen: false,
-	      cityOpen: false,
-	      resumesCount: 8,
-	      allResumesCount: 0
-	    };
-	    return _this;
-	  }
-	
-	  _createClass(WorkerMain, [{
-	    key: 'openMenu',
-	    value: function openMenu(value) {
-	      this.state[value] = !this.state[value];
-	      this.forceUpdate();
-	    }
-	  }, {
-	    key: 'setFilters',
-	    value: function setFilters(value, e) {
-	      this.state[value] = e.target.value;
-	      this.forceUpdate();
-	    }
-	  }, {
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      var _this2 = this;
-	
-	      var data = {};
-	      for (var i in this.state) {
-	        if ((i == 'post' || i == 'city' || i == 'data') && this.state[i]) {
-	          data[i] = this.state[i];
-	        }
-	      }
-	      console.log(data);
-	      (0, _utils.ajax)('/getWorkerInfo', { id: window.localStorage['id'], data: Object.keys(data).length > 0 ? data : false, count: this.state.resumesCount }, function (data) {
-	        _this2.setState({
-	          username: data.username,
-	          email: data.email,
-	          description: data.description,
-	          resumes: data.resumes,
-	          allResumesCount: data.allResumesCount
-	        });
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this3 = this,
-	          _React$createElement;
-	
-	      return this.state.username ? React.createElement(
-	        'div',
-	        { style: { marginTop: 50 + 'px', marginBottom: -120 + 'px' } },
-	        React.createElement(
-	          'div',
-	          { className: 'sidebar-collapse', style: { marginLeft: 10 + 'px', maxWidth: 400 + 'px', display: 'inline-block', minWidth: 250 + 'px', position: 'absolute' } },
-	          React.createElement(
-	            'ul',
-	            { className: 'nav', id: 'main-menu' },
-	            React.createElement(
-	              'li',
-	              null,
-	              React.createElement(
-	                'div',
-	                { style: { color: 'gray', fontWeight: 'bold', textAlign: 'center', margin: 10 + 'px' } },
-	                React.createElement(
-	                  'div',
-	                  { className: 'inner-text' },
-	                  this.state.username,
-	                  React.createElement('br', null),
-	                  React.createElement(
-	                    'small',
-	                    null,
-	                    this.state.email
-	                  )
-	                )
-	              )
-	            ),
-	            React.createElement(
-	              'li',
-	              { className: this.state.dateOpen ? 'active' : '' },
-	              React.createElement(
-	                'a',
-	                { style: { cursor: 'pointer' }, onClick: this.openMenu.bind(this, "dateOpen"), className: 'menu-top' },
-	                React.createElement('i', { className: 'fa fa-edit ' }),
-	                'Date',
-	                React.createElement('span', { className: 'fa arrow' })
-	              ),
-	              this.state.dateOpen ? React.createElement(
-	                'ul',
-	                { className: 'nav nav-second-level' },
-	                React.createElement(
-	                  'li',
-	                  null,
-	                  React.createElement(
-	                    'a',
-	                    null,
-	                    React.createElement('input', { type: 'date', className: 'form-control', onChange: this.setFilters.bind(this, "data"), value: this.state.data })
-	                  )
-	                ),
-	                React.createElement(
-	                  'li',
-	                  null,
-	                  React.createElement(
-	                    'a',
-	                    { style: { cursor: 'pointer' }, onClick: function onClick() {
-	                        return _this3.setState({ data: '' });
-	                      } },
-	                    'Clear'
-	                  )
-	                )
-	              ) : null
-	            ),
-	            React.createElement(
-	              'li',
-	              { className: this.state.postOpen ? 'active' : '' },
-	              React.createElement(
-	                'a',
-	                (_React$createElement = { style: { cursor: 'pointer' } }, _defineProperty(_React$createElement, 'style', { cursor: 'pointer' }), _defineProperty(_React$createElement, 'onClick', this.openMenu.bind(this, "postOpen")), _React$createElement),
-	                React.createElement('i', { className: 'fa fa-edit ' }),
-	                'Post',
-	                React.createElement('span', { className: 'fa arrow' })
-	              ),
-	              this.state.postOpen ? React.createElement(
-	                'ul',
-	                { className: 'nav nav-second-level' },
-	                React.createElement(
-	                  'li',
-	                  null,
-	                  React.createElement(
-	                    'a',
-	                    null,
-	                    React.createElement('input', { type: 'text', className: 'form-control', onChange: this.setFilters.bind(this, "post") })
-	                  )
-	                )
-	              ) : null
-	            ),
-	            React.createElement(
-	              'li',
-	              { className: this.state.cityOpen ? 'active' : '' },
-	              React.createElement(
-	                'a',
-	                { style: { cursor: 'pointer' }, onClick: this.openMenu.bind(this, "cityOpen") },
-	                React.createElement('i', { className: 'fa fa-edit  ' }),
-	                'City ',
-	                React.createElement('span', { className: 'fa arrow' })
-	              ),
-	              this.state.cityOpen ? React.createElement(
-	                'ul',
-	                { className: 'nav nav-second-level' },
-	                React.createElement(
-	                  'li',
-	                  null,
-	                  React.createElement(
-	                    'a',
-	                    null,
-	                    React.createElement('input', { type: 'text', className: 'form-control', onChange: this.setFilters.bind(this, "city") })
-	                  )
-	                )
-	              ) : null
-	            ),
-	            React.createElement(
-	              'li',
-	              null,
-	              React.createElement(
-	                'a',
-	                { style: { cursor: 'pointer' }, onClick: this.componentWillMount.bind(this) },
-	                React.createElement('i', { className: 'fa fa-recycle ' }),
-	                'Find'
-	              )
-	            )
-	          )
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'panel-body', style: { display: 'inline-block', width: '80%', marginLeft: '20%', overflow: 'auto', height: 446 + 'px', marginTop: 54 + 'px' } },
-	          React.createElement(
-	            'div',
-	            { className: 'list-group' },
-	            this.state.resumes.length > 0 ? this.state.resumes.map(function (resume, key) {
-	              return React.createElement(
-	                'a',
-	                { className: 'list-group-item', key: key },
-	                React.createElement('i', { className: ' icon-comment' }),
-	                ' ',
-	                resume.post,
-	                React.createElement(
-	                  'span',
-	                  { className: 'pull-right text-muted small' },
-	                  React.createElement(
-	                    'em',
-	                    null,
-	                    resume.date.slice(0, 10)
-	                  )
-	                )
-	              );
-	            }) : React.createElement(
-	              'span',
-	              null,
-	              'Резюме не найдены'
-	            )
-	          ),
-	          this.state.allResumesCount > this.state.resumesCount ? React.createElement(
-	            'a',
-	            { onClick: function onClick() {
-	                _this3.setState({ resumesCount: _this3.state.resumesCount + 8 });_this3.componentWillMount();
-	              }, className: 'btn btn-default btn-block btn-default' },
-	            'View More'
-	          ) : null
-	        )
-	      ) : React.createElement(_components.Loader, null);
-	    }
-	  }]);
-	
-	  return WorkerMain;
-	}(React.Component);
-	
-	exports.default = WorkerMain;
-	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(147)))
 
 /***/ }
 /******/ ]);

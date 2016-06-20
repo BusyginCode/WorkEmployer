@@ -26,7 +26,7 @@ export default class MainContent extends React.Component {
         this.setState({
           employers: data.employers,
           developers: data.developers,
-          tips: data.tips.slice(0, 6)
+          tips: data.tips.slice(0, 3)
         })
       },
       'GET'

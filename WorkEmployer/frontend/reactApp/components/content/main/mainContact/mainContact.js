@@ -44,6 +44,7 @@ export default class EmployerContact extends React.Component {
     for (let val in this.state.data) {
       if ((this.state.data[val].length < 6 && val !== 'description') || this.state.unValid) {
         this.setState({
+          wait: false,
           unValid: val
         })
         return
@@ -86,7 +87,7 @@ export default class EmployerContact extends React.Component {
           <div className="row">
             <div className="col-md-6 col-sm-6 wow fadeInDown" data-wow-delay="0.6s" id="registrationForm">
               <div className="col-md-12 col-sm-12">
-                <input type="text" className="form-control" placeholder="Login" name="Username" id="login" onBlur={ this.checkValid.bind(this, 'login', /^[a-z0-9_-]*$/) } onChange={ this.setUserValues.bind(this, 'login') } />
+                <input type="text" className="form-control" placeholder="Login" name="Username" id="login" onBlur={ this.checkValid.bind(this, 'login', /^[a-zA-Z]*$/) } onChange={ this.setUserValues.bind(this, 'login') } />
                 <input type="email" className="form-control" placeholder="Email" name="email" id="email" onBlur={ this.checkValid.bind(this, 'email', /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/) } onChange={ this.setUserValues.bind(this, 'email') } />
                 <input type="password" className="form-control" placeholder="Password" name="password" onBlur={ this.checkValid.bind(this, 'password', /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/) } onChange={ this.setUserValues.bind(this, 'password') } />  
                 <label htmlFor="code" style={{ marginRight: 10 + 'px', marginTop: -5 + 'px', color: 'white' }}>Worker</label>

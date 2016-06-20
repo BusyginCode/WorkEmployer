@@ -8,7 +8,7 @@ export default class Resumes extends React.Component {
     super()
     this.state = {
       resumes: false,
-      resumesCount: 8,
+      resumesCount: 5,
       allResumesCount: 0
     }
   }
@@ -41,7 +41,14 @@ export default class Resumes extends React.Component {
   }
 
   generateResumes() {
-    return this.state.resumes.map((resume, key) => {
+    let resumes = []
+    if (this.state.allResumesCount > this.state.resumesCount) {
+      resumes = this.state.resumes.slice(0, this.state.resumesCount)
+    } else {
+      resumes = this.state.resumes
+    }
+    console.log(this.state.resumesCount, resumes)
+    return resumes.map((resume, key) => {
       return (
         <div style={{ position: 'relative' }} key={ key }>
           <Link to="/resume" onClick={ this.seeResume.bind(this, resume.id, resume.userId) }>
@@ -49,11 +56,6 @@ export default class Resumes extends React.Component {
             <span style={{ position: 'absolute', top: 7 + "px", right: 0 }}>{ resume.date }</span>
           </Link>
           <hr />
-          {
-            this.state.allResumesCount > this.state.resumesCount ?
-               <a onClick={ () => { this.setState({ resumesCount: this.state.resumesCount + 8 }); this.componentWillMount();}  }  className="btn btn-default btn-block btn-default">View More</a>
-            : null
-          }
         </div>
       )
     })
@@ -68,6 +70,11 @@ export default class Resumes extends React.Component {
           this.state.resumes.length ?
             this.generateResumes()
           : <h2>{ (!this.props.samples ? "Resumes" : "Samples") } not found.</h2>
+        }
+        {
+          this.state.allResumesCount > this.state.resumesCount ?
+             <a onClick={ () => { this.setState({ resumesCount: this.state.resumesCount + 8 }, () => { this.componentWillMount(); }); }  }  className="btn btn-default btn-block btn-default">View More</a>
+          : null
         }
         </div>
       : <Loader />

@@ -57,3 +57,4 @@ class Company(models.Model):
 	skill_user = models.ForeignKey(User)
 	company = models.CharField(max_length=1000)
 	expirience = models.TextField()
+	date = models.DateField()
